@@ -1,0 +1,11 @@
+@mixin openMenuEffect {
+    -webkit-filter: brightness(40%);
+        filter: brightness(40%);
+    transition-duration: 0.5s;
+}
+
+@mixin closedMenuEffect {
+    -webkit-filter: none;
+        filter: none;
+    transition-duration: 0.5s;
+}
