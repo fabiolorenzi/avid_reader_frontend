@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
 import Header from "../../components/Header";
 import Login from "./Login";
@@ -8,6 +9,13 @@ import "./SignIn.css";
 function SignIn() {
     const [input, setInput] = useState<User>({id: 0, username: "", password: ""});
     const [user, setUser] = useState<User>();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (sessionStorage.getItem("user_id")) {
+            navigate("/main");
+        }
+    }, []);
 
     useEffect(() => {
         if (user) {
@@ -33,7 +41,7 @@ function SignIn() {
             body: JSON.stringify(user)
         })
         .then(resp => resp.json())
-        .then(data => data.status == 404 ? alert("The user hasn't been found. Try again.") : setUser(data))
+        .then(data => data.status === 404 ? alert("The user hasn't been found. Try again.") : setUser(data))
         .catch(err => console.log(err));
     };
 
