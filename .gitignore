@@ -16,5 +16,5 @@ yarn-error.log*
 
 /src/pages/*/*.css
 /src/pages/*/*.css.map
-/src/components/*/*.css
-/src/components/*/*.css.map
+/src/components/*.css
+/src/components/*.css.map
