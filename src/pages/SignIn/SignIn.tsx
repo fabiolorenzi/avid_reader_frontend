@@ -19,7 +19,8 @@ function SignIn() {
 
     useEffect(() => {
         if (user) {
-            console.log(user);
+            sessionStorage.setItem("user_id", user.id.toString());
+            navigate("/main");
         };
     }, [user]);
 
@@ -38,7 +39,7 @@ function SignIn() {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(input)
         })
         .then(resp => resp.json())
         .then(data => data.status === 404 ? alert("The user hasn't been found. Try again.") : setUser(data))
