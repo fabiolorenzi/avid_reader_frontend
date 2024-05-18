@@ -1,4 +1,5 @@
 import React, {ChangeEvent} from "react";
+import Button from "../../components/Button";
 import User from "../../types/User";
 import "./Login.css";
 
@@ -30,7 +31,10 @@ function Login({
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" value={user?.password} onChange={onChange} autoComplete="off" />
             </div>
-            <div className="login_buttonsLine"></div>
+            <div className="login_buttonsLine">
+                <Button text="Cancel" cancel onClick={onCancel} />
+                <Button text="Login" onClick={onSubmit} />
+            </div>
         </div>
     );
 };
