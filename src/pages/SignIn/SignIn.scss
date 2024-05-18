@@ -1,8 +1,5 @@
 @import "../../vars/_index.scss";
 
 .signIn_container {
-    display: block;
-    width: 100%;
-    height: 50px;
-    background-color: $blue;
+    @include pages();
 }
