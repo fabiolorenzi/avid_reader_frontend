@@ -2,6 +2,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import {HiOutlineBookOpen} from "react-icons/hi2";
 import {CiHeart} from "react-icons/ci";
+import {IoHeart} from "react-icons/io5";
 import Book from "../types/Book";
 import "./BookList.css";
 
@@ -45,9 +46,16 @@ function BookList({
                                         </>
                                     : ""
                                 }
-                                <div className="bookList_heart" onClick={() => onAdd(book)}>
-                                    <CiHeart />
-                                </div>
+                                {
+                                    favBooks.findIndex(x => x.author === book.author && x.title === book.title) === -1 ?
+                                    <div className="bookList_heart" onClick={() => onAdd(book)}>
+                                        <CiHeart />
+                                    </div>
+                                    : 
+                                    <div className="bookList_heartUsed" onClick={() => onAdd(book)}>
+                                        <IoHeart />
+                                    </div>
+                                }
                             </div>
                         </div>
                     );
