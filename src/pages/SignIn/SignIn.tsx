@@ -13,14 +13,14 @@ function SignIn() {
 
     useEffect(() => {
         if (sessionStorage.getItem("user_id")) {
-            navigate("/main");
+            navigate("/dashboard");
         }
     }, []);
 
     useEffect(() => {
         if (user) {
             sessionStorage.setItem("user_id", user.id.toString());
-            navigate("/main");
+            navigate("/dashboard");
         };
     }, [user]);
 
