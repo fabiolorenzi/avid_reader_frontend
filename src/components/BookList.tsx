@@ -12,7 +12,7 @@ interface BookListProps {
     books: Book[];
     isFav?: boolean;
     onDelete?: (id: number) => void;
-    onAdd: (book: Book) => void;
+    onAdd?: (book: Book) => void;
 };
 
 function BookList({
@@ -64,7 +64,7 @@ function BookList({
                                 }
                                 {
                                     favBooks.length === 0 || favBooks.filter(f => f.author === book.author && f.title === book.title).length === 0?
-                                        <div className="bookList_heart" onClick={() => onAdd(book)}>
+                                        <div className="bookList_heart" onClick={() => onAdd ? onAdd(book) : ""}>
                                             <CiHeart />
                                         </div>
                                     : 
