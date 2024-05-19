@@ -25,14 +25,14 @@ function NavigationBar() {
                     <div className="space_line"></div>
                 </NavLink>
                 <NavLink
-                    to="/dashboard"
+                    to="/favorites"
                     className={getRightClass("/favorites")}
                 >
                     <FaRegHeart />
                     <div className="space_line"></div>
                 </NavLink>
                 <NavLink
-                    to="/dashboard"
+                    to="/settings"
                     className={getRightClass("/settings")}
                 >
                     <GoGear />
