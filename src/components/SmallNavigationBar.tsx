@@ -12,7 +12,7 @@ function SmallNavigationBar() {
     function getRightClass(target: string): string {
         const pathname: string = window.location.pathname;
         return target.includes(pathname) || (target === "/favorites" && pathname.includes("edit"))
-            ? "navigationBar_active" : "navigationBar_notActive";
+            ? "smallNavigationBar_active" : "smallNavigationBar_notActive";
     };
 
     return(

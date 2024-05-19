@@ -7,6 +7,7 @@ import Loading from "../../components/Loading";
 import NoData from "../../components/NoData";
 import {Helmet} from "react-helmet";
 import Header from "../../components/Header";
+import Banner from "../../media/banner.jpg";
 import "./EditFavorite.css";
 
 function EditFavorite() {
@@ -49,11 +50,16 @@ function EditFavorite() {
                 <SmallNavigationBar />
                 <div className="editFavorite_page">
                     <div className="editFavorite_content">
-
                         {
                             !isLoading ?
                                 book ?
-                                    <div>{book.title}</div>
+                                    <div className="editFavorite_block">
+                                        <div className="editFavorite_banner">
+                                            <img src={Banner} alt="banner" />
+                                            <h1>{book.title} by {book.author}</h1>
+                                        </div>
+                                        <h1 className="editFavorite_title">Edit</h1>
+                                    </div>
                                 : <NoData />
                             : <Loading />
                         }
