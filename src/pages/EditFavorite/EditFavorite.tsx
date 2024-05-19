@@ -46,6 +46,10 @@ function EditFavorite() {
         setBook({...book, [e.target.name]: e.target.value} as {[K in keyof Book]: Book[K]});
     };
 
+    function manageRating(value: number) {
+        setBook({...book as Book, rating: value as number});
+    };
+
     function onUpdate() {
         console.log(book);
     };
@@ -82,7 +86,7 @@ function EditFavorite() {
                                                     <p>Rating</p>
                                                 </div>
                                                 <div className="editFavorite_ratingInput">
-                                                    <Stars rating={book.rating} />
+                                                    <Stars rating={book.rating} setRating={manageRating} />
                                                 </div>
                                             </div>
                                             <div className="editFavorite_buttonsLine">
