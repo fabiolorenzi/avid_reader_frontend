@@ -24,14 +24,18 @@ function Dashboard() {
         if (!sessionStorage.getItem("user_id")) {
             navigate("/");
         } else {
-            fetch("https://avid-reader-backend.hopto.org/api/v1/Book", {
-                method: "GET"
-            })
-            .then(resp => resp.json())
-            .then(data => setFavBooks(data))
-            .catch(err => console.log(err));
+            getFavBooks();
         };
     }, []);
+
+    function getFavBooks() {
+        fetch("https://avid-reader-backend.hopto.org/api/v1/Book", {
+            method: "GET"
+        })
+        .then(resp => resp.json())
+        .then(data => setFavBooks(data))
+        .catch(err => console.log(err));
+    };
 
     async function searchBooks() {
         setIsLoading(true);
@@ -45,16 +49,33 @@ function Dashboard() {
     };
 
     function onAdd(book: Book) {
-        console.log(book);
-    };
-
-    function onDelete(book_id: number) {
-        console.log(book_id);
+        setIsLoading(true);
+        const user_id = sessionStorage.getItem("user_id") as string;
+        console.log(user_id);
+        fetch(`https://avid-reader-backend.hopto.org/api/v1/Book?user=${user_id}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                userId: parseInt(user_id),
+                title: book.title.replace('"', "").replace('"', ""),
+                author: book.author,
+                cost: book.price,
+                rating: book.rating
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => setFavBooks(data))
+        .then(() => getFavBooks())
+        .then(() => setIsLoading(false))
+        .then(() => searchBooks())
+        .catch(err => console.log(err));
     };
 
     useEffect(() => {
         setIsLoading(false);
-        console.log(books);
     }, [books]);
 
     return(
@@ -97,8 +118,6 @@ function Dashboard() {
                                     <BookList
                                         favBooks={favBooks}
                                         books={books}
-                                        isFav
-                                        onDelete={onDelete}
                                         onAdd={onAdd}
                                     />
                                 : <NoData />
