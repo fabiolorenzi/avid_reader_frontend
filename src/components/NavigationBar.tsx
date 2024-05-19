@@ -11,7 +11,8 @@ function NavigationBar() {
     // active and not active NavLink
     function getRightClass(target: string): string {
         const pathname: string = window.location.pathname;
-        return target.includes(pathname) ? "navigationBar_active" : "navigationBar_notActive";
+        return target.includes(pathname) || (target === "/favorites" && pathname.includes("edit"))
+            ? "navigationBar_active" : "navigationBar_notActive";
     };
 
     return(

@@ -11,7 +11,8 @@ function SmallNavigationBar() {
     // active and not active NavLink
     function getRightClass(target: string): string {
         const pathname: string = window.location.pathname;
-        return target.includes(pathname) ? "smallNavigationBar_active" : "smallNavigationBar_notActive";
+        return target.includes(pathname) || (target === "/favorites" && pathname.includes("edit"))
+            ? "navigationBar_active" : "navigationBar_notActive";
     };
 
     return(
