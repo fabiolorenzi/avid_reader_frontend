@@ -1,5 +1,6 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
+import Stars from "./Stars";
 import {HiOutlineBookOpen} from "react-icons/hi2";
 import {CiHeart} from "react-icons/ci";
 import {IoHeart} from "react-icons/io5";
@@ -35,9 +36,8 @@ function BookList({
                                 <h2>by {book.author}</h2>
                             </div>
                             <div className="bookList_right">
-
-
                                 <h1>{book.price.toString().replace(".00", " GBP")}</h1>
+                                <Stars rating={book.rating} />
                                 {
                                     isFav ?
                                         <>
@@ -52,7 +52,7 @@ function BookList({
                                         <CiHeart />
                                     </div>
                                     : 
-                                    <div className="bookList_heartUsed" onClick={() => onAdd(book)}>
+                                    <div className="bookList_heart">
                                         <IoHeart />
                                     </div>
                                 }
