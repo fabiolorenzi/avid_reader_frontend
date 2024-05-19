@@ -1,0 +1,99 @@
+@import "../vars/_index";
+
+.bookList_container {
+    display: block;
+    width: 100%;
+}
+
+.bookList_single {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: $white;
+    margin-bottom: 8px;
+    .bookList_left {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        svg {
+            font-size: $lg-font-size;
+            color: $green;
+            padding: 0 5px;
+        }
+        h1 {
+            display: block;
+            font-size: $sm-font-size;
+            font-weight: 600;
+            color: $black;
+            margin-right: 5px;
+            max-width: 250px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            @media (max-width: $xl-screen) {
+                max-width: 200px;
+            }
+            @media(max-width: $lg-screen) {
+                max-width: 300px;
+            }
+        }
+        h2 {
+            display: block;
+            font-size: $xs-font-size;
+            font-weight: 400;
+            color: $grey;
+            max-width: 250px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            @media (max-width: $xl-screen) {
+                max-width: 200px;
+            }
+            @media(max-width: $lg-screen) {
+                max-width: 250px;
+            }
+        }
+    }
+    .bookList_right {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        h1 {
+            font-size: $sm-font-size;
+            font-weight: 600;
+            color: $black;
+            margin-right: 5px;
+        }
+        p {
+            font-size: $xs-font-size;
+            font-weight: 400;
+            color: $grey;
+            margin-right: 5px;
+            cursor: pointer;
+            transition-duration: 0.3s;
+            &:hover {
+                color: $black;
+                transition-duration: 0.3s;
+            }
+        }
+        .bookList_heart {
+            display: flex;
+            align-items: center;
+            svg {
+                font-size: $xl-font-size;
+                color: $green;
+                padding: 0 5px;
+                cursor: pointer;
+            }
+        }
+    }
+    @media (max-width: $lg-screen) {
+        display: block;
+        .bookList_left,
+        .bookList_right {
+            width: 100%;
+        }
+    }
+}

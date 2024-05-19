@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import Book from "../../types/Book";
 import DashboardLine from "./DashboardLine";
+import BookList from "../../components/BookList";
 import NavigationBar from "../../components/NavigationBar";
 import SmallNavigationBar from "../../components/SmallNavigationBar";
 import SearchBar from "../../components/SearchBar";
@@ -12,7 +14,8 @@ import "./Dashboard.css";
 
 function Dashboard() {
     const [searchValue, setSearchValue] = useState<string>("");
-    const [books, setBooks] = useState<any[]>([]);
+    const [favBooks, setFavBooks] = useState<Book[]>([]);
+    const [books, setBooks] = useState<Book[]>([]);
     const [hasSearched, setHasSearched] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const navigate = useNavigate();
@@ -20,8 +23,19 @@ function Dashboard() {
     useEffect(() => {
         if (!sessionStorage.getItem("user_id")) {
             navigate("/");
-        }
+        } else {
+            fetch("https://avid-reader-backend.hopto.org/api/v1/Book", {
+                method: "GET"
+            })
+            .then(resp => resp.json())
+            .then(data => setFavBooks(data))
+            .catch(err => console.log(err));
+        };
     }, []);
+
+    useEffect(() => {
+        console.log(favBooks);
+    }, [favBooks]);
 
     async function searchBooks() {
         setIsLoading(true);
@@ -32,6 +46,14 @@ function Dashboard() {
         .then(resp => resp.json())
         .then(data => setBooks(data?.results))
         .catch(err => console.log(err));
+    };
+
+    function onAdd(book: Book) {
+        console.log(book);
+    };
+
+    function onDelete(book_id: number) {
+        console.log(book_id);
     };
 
     useEffect(() => {
@@ -71,7 +93,13 @@ function Dashboard() {
                                         />
                                     </div>
                                 : books.length > 0 ?
-                                    <div>list</div>
+                                    <BookList
+                                        favBooks={favBooks}
+                                        books={books}
+                                        isFav
+                                        onDelete={onDelete}
+                                        onAdd={onAdd}
+                                    />
                                 : <NoData />
                             : <Loading />
                         }
