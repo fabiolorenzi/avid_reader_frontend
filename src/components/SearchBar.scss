@@ -1,0 +1,50 @@
+@import "../vars/_index";
+
+.searchBar_container {
+    display: flex;
+    width: 100%;
+    padding-top: 30px;
+    margin-bottom: 50px;
+    justify-content: center;
+}
+
+.searchBar_main {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 1px solid $light_grey;
+    border-radius: 20px;
+    .searchBar_icon {
+        display: block;
+        background-color: $white;
+        padding: 0 5px;
+        border-radius: 20px 0 0 20px;
+        svg {
+            display: block;
+            margin: auto;
+            color: $green;
+            width: 100%;
+            font-size: $xl-font-size;
+            padding: 5px 8px 5px 2px;
+        }
+    }
+    input {
+        display: block;
+        width: 100%;
+        height: 28px;
+        border: none;
+        background-color: $white;
+    }
+    .searchBar_button {
+        display: block;
+        background-color: $green;
+        border-radius: 0 20px 20px 0;
+        color: $white;
+        font-size: $lg-font-size;
+        font-weight: 500;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+}

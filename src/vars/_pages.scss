@@ -16,6 +16,13 @@
     @media (max-width: $sm-screen) {
         width: 100%;
         margin-left: 0;
-        padding-top: 134px;
+        padding-top: 70px;
     }
+}
+
+@mixin content() {
+    display: block;
+    width: 80%;
+    min-height: calc(100vh - 80px);
+    margin: auto;
 }

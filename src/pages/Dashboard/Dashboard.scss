@@ -7,3 +7,7 @@
 .dashboard_page {
     @include page();
 }
+
+.dashboard_content {
+    @include content();
+}
