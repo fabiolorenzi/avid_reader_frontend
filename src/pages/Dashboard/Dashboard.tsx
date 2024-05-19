@@ -33,10 +33,6 @@ function Dashboard() {
         };
     }, []);
 
-    useEffect(() => {
-        console.log(favBooks);
-    }, [favBooks]);
-
     async function searchBooks() {
         setIsLoading(true);
         setHasSearched(true);
@@ -72,6 +68,11 @@ function Dashboard() {
                 <SmallNavigationBar />
                 <div className="dashboard_page">
                     <div className="dashboard_content">
+                        {
+                            hasSearched ?
+                                <h1 className="dashboard_title">New York Times Bestsellers</h1>
+                            : ""
+                        }
                         <SearchBar
                             placeholder="What books would you like to find?"
                             searchValue={searchValue}
