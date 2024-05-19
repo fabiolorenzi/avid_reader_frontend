@@ -1,17 +1,33 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import NavigationBar from "../../components/NavigationBar";
 import SmallNavigationBar from "../../components/SmallNavigationBar";
 import SearchBar from "../../components/SearchBar";
+import Loading from "../../components/Loading";
 import {Helmet} from "react-helmet";
 import Header from "../../components/Header";
 import "./Dashboard.css";
 
 function Dashboard() {
     const [searchValue, setSearchValue] = useState<string>("");
+    const [books, setBooks] = useState<any[]>([]);
+    const [hasSearched, setHasSearched] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    function searchBooks() {
-        console.log("clicked");
+    async function searchBooks() {
+        setIsLoading(true);
+        setHasSearched(true);
+        fetch(`https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=KAjOHJJtTOqrXEhKxBlmwIAQQ5Xu7gIr${searchValue.length > 0 ? "&title=" + searchValue.replace(" ", "+") : ""}`, {
+            method: "GET"
+        })
+        .then(resp => resp.json())
+        .then(data => setBooks(data?.results))
+        .catch(err => console.log(err));
     };
+
+    useEffect(() => {
+        setIsLoading(false);
+        console.log(books);
+    }, [books]);
 
     return(
         <div className="dashboard_container">
@@ -30,6 +46,15 @@ function Dashboard() {
                             setSearchValue={setSearchValue}
                             onClick={searchBooks}
                         />
+                        {
+                            !isLoading ?
+                                !hasSearched ?
+                                    <div className="dashboard_lines">lines</div>
+                                : books.length > 0 ?
+                                    <div>list</div>
+                                : <div>No data</div>
+                            : <Loading />
+                        }
                     </div>
                 </div>
             </div>

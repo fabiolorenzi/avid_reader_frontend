@@ -1,0 +1,12 @@
+@import "../vars/_index";
+
+.loading_container {
+    display: block;
+    width: auto;
+    text-align: center;
+    h1 {
+        color: $black;
+        font-weight: 600;
+        font-size: $xxl-font-size;
+    }
+}
