@@ -3,6 +3,7 @@ import NavigationBar from "../../components/NavigationBar";
 import SmallNavigationBar from "../../components/SmallNavigationBar";
 import SearchBar from "../../components/SearchBar";
 import Loading from "../../components/Loading";
+import NoData from "../../components/NoData";
 import {Helmet} from "react-helmet";
 import Header from "../../components/Header";
 import "./Dashboard.css";
@@ -52,7 +53,7 @@ function Dashboard() {
                                     <div className="dashboard_lines">lines</div>
                                 : books.length > 0 ?
                                     <div>list</div>
-                                : <div>No data</div>
+                                : <NoData />
                             : <Loading />
                         }
                     </div>
