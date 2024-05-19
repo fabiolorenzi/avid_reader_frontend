@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Book from "../../types/Book";
 import NavigationBar from "../../components/NavigationBar";
 import SmallNavigationBar from "../../components/SmallNavigationBar";
 import Loading from "../../components/Loading";
 import NoData from "../../components/NoData";
+import Stars from "../../components/Stars";
 import {Helmet} from "react-helmet";
 import Header from "../../components/Header";
 import Banner from "../../media/banner.jpg";
@@ -39,6 +40,11 @@ function EditFavorite() {
         setIsLoading(false);
     }, [book]);
 
+    function onChange(e: ChangeEvent<HTMLInputElement>) {
+        e.preventDefault();
+        setBook({...book, [e.target.name]: e.target.value} as {[K in keyof Book]: Book[K]});
+    };
+
     return(
         <div className="editFavorite_container">
             <Helmet>
@@ -59,6 +65,22 @@ function EditFavorite() {
                                             <h1>{book.title} by {book.author}</h1>
                                         </div>
                                         <h1 className="editFavorite_title">Edit</h1>
+                                        <div className="editFavorite_inputs">
+                                            <div className="editFavorite_input">
+                                                <div className="editFavorite_inputLeft">
+                                                    <p>Cost</p>
+                                                </div>
+                                                <input type="text" name="cost" value={book.price || "0"} onChange={onChange} />
+                                            </div>
+                                            <div className="editFavorite_input">
+                                                <div className="editFavorite_inputLeft">
+                                                    <p>Rating</p>
+                                                </div>
+                                                <div className="editFavorite_ratingInput">
+                                                    <Stars rating={book.rating} />
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 : <NoData />
                             : <Loading />
