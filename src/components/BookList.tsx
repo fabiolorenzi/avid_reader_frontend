@@ -27,7 +27,6 @@ function BookList({
 
     useEffect(() => {
         if (favBooks.length > 0) {
-            console.log(favBooks[0]);
             let tempArr: Book[] = [];
             for (let x = 0; x < books.length; x++) {
                 const eq = favBooks.filter(f => f.author === books[x].author && f.title === books[x].title);
@@ -57,7 +56,7 @@ function BookList({
                                 {
                                     isFav && onDelete ?
                                         <>
-                                            <p onClick={() => navigate("/favorites?id=" + book.id.toString())}>Edit</p>
+                                            <p onClick={() => navigate("/edit-favorite?book_id=" + book.id.toString())}>Edit</p>
                                             <p onClick={() => onDelete(book.id)}>Delete</p>
                                         </>
                                     : ""

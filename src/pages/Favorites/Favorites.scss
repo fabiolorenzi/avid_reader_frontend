@@ -10,7 +10,7 @@
 
 .favorites_content {
     @include content();
-    .dashboard_title {
+    .favorites_title {
         display: block;
         font-size: $xl-font-size;
         font-weight: 600;

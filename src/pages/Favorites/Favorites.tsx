@@ -21,19 +21,9 @@ function Favorites() {
         if (!sessionStorage.getItem("user_id")) {
             navigate("/");
         } else {
-            getFavBooks();
+            searchBooks();
         };
     }, []);
-
-    function getFavBooks() {
-        const user_id = sessionStorage.getItem("user_id") as string;
-        fetch(`https://avid-reader-backend.hopto.org/api/v1/Book?user=${user_id}`, {
-            method: "GET"
-        })
-        .then(resp => resp.json())
-        .then(data => setFavBooks(data))
-        .catch(err => console.log(err));
-    };
 
     async function searchBooks() {
         const user_id = sessionStorage.getItem("user_id") as string;
@@ -50,7 +40,6 @@ function Favorites() {
         fetch(`https://avid-reader-backend.hopto.org/api/v1/Book/${book_id}`, {
             method: "DELETE"
         })
-        .then(resp => resp.json())
         .then(() => searchBooks())
         .catch(err => console.log(err));
     };
