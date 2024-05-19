@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import DashboardLine from "./DashboardLine";
 import NavigationBar from "../../components/NavigationBar";
 import SmallNavigationBar from "../../components/SmallNavigationBar";
 import SearchBar from "../../components/SearchBar";
@@ -13,6 +15,13 @@ function Dashboard() {
     const [books, setBooks] = useState<any[]>([]);
     const [hasSearched, setHasSearched] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!sessionStorage.getItem("user_id")) {
+            navigate("/");
+        }
+    }, []);
 
     async function searchBooks() {
         setIsLoading(true);
@@ -50,7 +59,17 @@ function Dashboard() {
                         {
                             !isLoading ?
                                 !hasSearched ?
-                                    <div className="dashboard_lines">lines</div>
+                                    <div className="dashboard_lines">
+                                        <DashboardLine
+                                            title="New York Times Bestsellers"
+                                            onClick={searchBooks}
+                                            top
+                                        />
+                                        <DashboardLine
+                                            title="Favorites"
+                                            onClick={() => navigate("/favorites")}
+                                        />
+                                    </div>
                                 : books.length > 0 ?
                                     <div>list</div>
                                 : <NoData />

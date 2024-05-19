@@ -1,0 +1,31 @@
+@import "../../vars/_index";
+
+.dashboardLine_container {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    h1 {
+        font-size: $lg-font-size;
+        color: $black;
+        font-weight: 500;
+        text-align: left;
+        margin: 0 0 2px;
+        cursor: pointer;
+        transition-duration: 0.3s;
+        &:hover {
+            text-decoration: underline;
+            transition-duration: 0.3s;
+        }
+    }
+    .dashboardLine_imageLine {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        img {
+            display: block;
+            width: 31%;
+        }
+    }
+}
