@@ -1,5 +1,6 @@
 import React from "react";
 import NavigationBar from "../../components/NavigationBar";
+import SmallNavigationBar from "../../components/SmallNavigationBar";
 import {Helmet} from "react-helmet";
 import Header from "../../components/Header";
 import "./Dashboard.css";
@@ -13,7 +14,8 @@ function Dashboard() {
             <Header />
             <div className="dashboard_main">
                 <NavigationBar />
-                <div className="dashboard_page"></div>
+                <SmallNavigationBar />
+                <div className="dashboard_page">Hello</div>
             </div>
         </div>
     );

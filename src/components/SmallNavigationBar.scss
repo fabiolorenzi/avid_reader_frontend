@@ -1,0 +1,50 @@
+@import "../vars/_index";
+
+.smallNavigationBar_container {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    background-color: $dark_blue;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 80px;
+    .smallNavigationBar_notActive {
+        display: flex;
+        align-items: center;
+        width: 33%;
+        padding: 12px 0;
+        transition-duration: 0.3s;
+        svg {
+            display: block;
+            margin: auto;
+            font-size: $xxl-font-size;
+            color: $light_grey;
+            transition-duration: 0.3s;
+        }
+        &:hover {
+            background-color: $blue;
+            transition-duration: 0.3s;
+            svg {
+                color: $white;
+                transition-duration: 0.3s;
+            }
+        }
+    }
+    .smallNavigationBar_active {
+        display: flex;
+        align-items: center;
+        width: 33%;
+        padding: 12px 0;
+        background-color: $blue;
+        svg {
+            display: block;
+            margin: auto;
+            font-size: $xxl-font-size;
+            color: $white;
+        }
+    }
+    @media (min-width: $sm-screen) {
+        display: none;
+    }
+}

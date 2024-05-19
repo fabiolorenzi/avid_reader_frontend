@@ -73,4 +73,7 @@
             }
         }
     }
+    @media (max-width: $sm-screen) {
+        display: none;
+    }
 }

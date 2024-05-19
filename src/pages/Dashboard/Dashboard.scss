@@ -1,5 +1,9 @@
 @import "../../vars/_index.scss";
 
 .dashboard_container {
-    @include pages();
+    @include container();
+}
+
+.dashboard_page {
+    @include page();
 }
