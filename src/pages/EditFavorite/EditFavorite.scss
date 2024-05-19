@@ -1,0 +1,13 @@
+@import "../../vars/_index.scss";
+
+.editFavorite_container {
+    @include container();
+}
+
+.editFavorite_page {
+    @include page();
+}
+
+.editFavorite_content {
+    @include content();
+}
