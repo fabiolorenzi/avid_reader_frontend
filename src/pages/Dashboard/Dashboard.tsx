@@ -29,7 +29,8 @@ function Dashboard() {
     }, []);
 
     function getFavBooks() {
-        fetch("https://avid-reader-backend.hopto.org/api/v1/Book", {
+        const user_id = sessionStorage.getItem("user_id") as string;
+        fetch(`https://avid-reader-backend.hopto.org/api/v1/Book?user=${user_id}`, {
             method: "GET"
         })
         .then(resp => resp.json())
@@ -51,8 +52,7 @@ function Dashboard() {
     function onAdd(book: Book) {
         setIsLoading(true);
         const user_id = sessionStorage.getItem("user_id") as string;
-        console.log(user_id);
-        fetch(`https://avid-reader-backend.hopto.org/api/v1/Book?user=${user_id}`, {
+        fetch(`https://avid-reader-backend.hopto.org/api/v1/Book`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function Dashboard() {
             },
             body: JSON.stringify({
                 userId: parseInt(user_id),
-                title: book.title.replace('"', "").replace('"', ""),
+                title: book.title,
                 author: book.author,
                 cost: book.price,
                 rating: book.rating

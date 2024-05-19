@@ -30,7 +30,7 @@ function BookList({
             console.log(favBooks[0]);
             let tempArr: Book[] = [];
             for (let x = 0; x < books.length; x++) {
-                const eq = favBooks.filter(f => f.author === books[x].author && f.title === books[x].title.replace('"', "").replace('"', ""));
+                const eq = favBooks.filter(f => f.author === books[x].author && f.title === books[x].title);
                 eq.length === 0 ? tempArr.push(books[x]) : tempArr.push(eq[0]);
             };
             setBooksArr(tempArr);
@@ -38,10 +38,6 @@ function BookList({
             setBooksArr(books);
         };
     }, [books, favBooks]);
-
-    useEffect(() => {
-        console.log(booksArr);
-    }, [booksArr]);
 
     return(
         <div className="bookList_container">
@@ -56,7 +52,7 @@ function BookList({
                                 <h2>by {book.author}</h2>
                             </div>
                             <div className="bookList_right">
-                                <h1>{book.price.toString().replace(".00", " GBP")}</h1>
+                                <h1>{book?.price ? Math.round(book.price).toString() + " GBP" : "0 GBP"}</h1>
                                 <Stars rating={book.rating} />
                                 {
                                     isFav && onDelete ?
@@ -67,7 +63,7 @@ function BookList({
                                     : ""
                                 }
                                 {
-                                    favBooks.length > 0 && favBooks.filter(f => f.author === book.author && f.title === book.title).length === 0?
+                                    favBooks.length === 0 || favBooks.filter(f => f.author === book.author && f.title === book.title).length === 0?
                                         <div className="bookList_heart" onClick={() => onAdd(book)}>
                                             <CiHeart />
                                         </div>
