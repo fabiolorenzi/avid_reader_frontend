@@ -102,4 +102,23 @@
             }
         }
     }
+    .editFavorite_return {
+        display: block;
+        width: 100%;
+        margin-top: 50px;
+        p {
+            font-size: $md-font-size;
+            font-weight: 400;
+            color: $grey;
+            a {
+                color: $green;
+                text-decoration: none;
+                transition-duration: 0.3s;
+                &:hover {
+                    color: $grey;
+                    transition-duration: 0.3s;
+                }
+            }
+        }
+    }
 }

@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Book from "../../types/Book";
+import Button from "../../components/Button";
 import NavigationBar from "../../components/NavigationBar";
 import SmallNavigationBar from "../../components/SmallNavigationBar";
 import Loading from "../../components/Loading";
@@ -45,6 +46,10 @@ function EditFavorite() {
         setBook({...book, [e.target.name]: e.target.value} as {[K in keyof Book]: Book[K]});
     };
 
+    function onUpdate() {
+        console.log(book);
+    };
+
     return(
         <div className="editFavorite_container">
             <Helmet>
@@ -70,7 +75,7 @@ function EditFavorite() {
                                                 <div className="editFavorite_inputLeft">
                                                     <p>Cost</p>
                                                 </div>
-                                                <input type="text" name="cost" value={book.price || "0"} onChange={onChange} />
+                                                <input type="text" name="cost" value={book.price} onChange={onChange} />
                                             </div>
                                             <div className="editFavorite_input">
                                                 <div className="editFavorite_inputLeft">
@@ -79,6 +84,12 @@ function EditFavorite() {
                                                 <div className="editFavorite_ratingInput">
                                                     <Stars rating={book.rating} />
                                                 </div>
+                                            </div>
+                                            <div className="editFavorite_buttonsLine">
+                                                <Button text="UPDATE" onClick={onUpdate} />
+                                            </div>
+                                            <div className="editFavorite_return">
+                                                <p>← Return to <a href="/favorites">Favorites</a></p>
                                             </div>
                                         </div>
                                     </div>
