@@ -1,0 +1,39 @@
+.header_container {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  box-shadow: 0px 0px 3px 0px rgba(22, 22, 22, 0.7019607843);
+}
+
+.header_left {
+  display: flex;
+  align-items: center;
+  min-width: 80px;
+  height: 80px;
+  background-color: #93b4bc;
+}
+.header_left img {
+  display: block;
+  width: 60%;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.header_right {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #ffffff;
+}
+.header_right h1 {
+  font-size: 21px;
+  margin-left: 50px;
+  color: #000000;
+}
+.header_right h1 span {
+  color: #8b201d;
+}/*# sourceMappingURL=Header.css.map */

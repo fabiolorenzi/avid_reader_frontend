@@ -1,0 +1,10 @@
+.loading_container {
+  display: block;
+  width: auto;
+  text-align: center;
+}
+.loading_container h1 {
+  color: #000000;
+  font-weight: 600;
+  font-size: 30px;
+}/*# sourceMappingURL=Loading.css.map */

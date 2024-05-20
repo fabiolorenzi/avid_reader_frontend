@@ -1,0 +1,17 @@
+.stars_container {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0 10px 0 10px;
+}
+.stars_container .fullStar svg {
+  font-size: 19px;
+  color: #e08d3a;
+}
+.stars_container .emptyStar svg {
+  font-size: 19px;
+  color: #bdbdbd;
+}
+
+.hoverable {
+  cursor: pointer;
+}/*# sourceMappingURL=Stars.css.map */

@@ -13,8 +13,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-/src/pages/*/*.css
-/src/pages/*/*.css.map
-/src/components/*.css
-/src/components/*.css.map

@@ -1,0 +1,30 @@
+button {
+  display: block;
+  min-width: 120px;
+  padding: 5px 20px;
+  color: #ffffff;
+  font-size: 14px;
+  border: 1px #7a7a7a;
+  font-weight: 500;
+  border-radius: 20px;
+  box-shadow: 0px 1px 3px 0px rgba(22, 22, 22, 0.7019607843);
+  transition-duration: 0.3s;
+}
+
+.cancelButton {
+  background-color: #8b201d;
+}
+.cancelButton:hover {
+  background-color: #e08d3a;
+  color: #000000;
+  transition-duration: 0.3s;
+}
+
+.submitButton {
+  background-color: #5c90f4;
+}
+.submitButton:hover {
+  background-color: #e08d3a;
+  color: #000000;
+  transition-duration: 0.3s;
+}/*# sourceMappingURL=Button.css.map */

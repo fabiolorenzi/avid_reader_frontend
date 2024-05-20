@@ -1,0 +1,10 @@
+.noData_container {
+  display: block;
+  width: auto;
+  text-align: center;
+}
+.noData_container h1 {
+  color: #000000;
+  font-weight: 600;
+  font-size: 30px;
+}/*# sourceMappingURL=NoData.css.map */

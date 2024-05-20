@@ -1,0 +1,36 @@
+.favorites_container {
+  display: block;
+  background-color: #ffffff;
+  padding-top: 80px;
+  min-height: calc(100vh - 80px);
+}
+
+.favorites_page {
+  display: block;
+  width: calc(100% - 80px);
+  margin-left: 80px;
+  background-color: #e9edf6;
+}
+@media (max-width: 576px) {
+  .favorites_page {
+    width: 100%;
+    margin-left: 0;
+    padding-top: 70px;
+  }
+}
+
+.favorites_content {
+  display: block;
+  width: 85%;
+  min-height: calc(100vh - 80px);
+  margin: auto;
+}
+.favorites_content .favorites_title {
+  display: block;
+  font-size: 21px;
+  font-weight: 600;
+  color: #454664;
+  text-align: left;
+  padding: 30px 0 20px;
+  margin: 0;
+}/*# sourceMappingURL=Favorites.css.map */
