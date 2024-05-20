@@ -62,7 +62,7 @@ function Dashboard() {
                 userId: parseInt(user_id),
                 title: book.title,
                 author: book.author,
-                cost: book.price,
+                price: book.price,
                 rating: book.rating
             })
         })

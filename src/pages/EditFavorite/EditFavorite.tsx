@@ -51,7 +51,24 @@ function EditFavorite() {
     };
 
     function onUpdate() {
-        console.log(book);
+        fetch(`https://avid-reader-backend.hopto.org/api/v1/Book`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                id: book?.id,
+                userId: book?.userId,
+                title: book?.title,
+                author: book?.author,
+                price: book?.price,
+                rating: book?.rating
+            })
+        })
+        .then(resp => resp.json())
+        .then(() => navigate("/favorites"))
+        .catch(err => console.log(err));
     };
 
     return(
